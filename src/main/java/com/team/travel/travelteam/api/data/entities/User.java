@@ -1,18 +1,16 @@
 package com.team.travel.travelteam.api.data.entities;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name = "user", schema = "public")
-public class User {
+public class User implements Serializable{
 
     @Id
     @Column(name = "user_name", nullable = false, updatable = false)
@@ -25,13 +23,22 @@ public class User {
     @Size(max = 50)
     private String password;
 
+    @Column(name = "user_email", nullable = false)
+    @NotNull
+    @Size(max = 50)
+    private String email;
+
+    @JsonBackReference
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    private List<Position> positions;
+
     public User() {
     }
 
-    @JsonCreator
-    public User(@JsonProperty("user") String user, @JsonProperty("password") String password) {
+    public User(String user, String password, String email) {
         this.user = user;
         this.password = password;
+        this.email = email;
     }
 
     public String getUser() {
@@ -48,5 +55,21 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public List<Position> getPositions() {
+        return positions;
+    }
+
+    public void setPositions(List<Position> positions) {
+        this.positions = positions;
     }
 }
