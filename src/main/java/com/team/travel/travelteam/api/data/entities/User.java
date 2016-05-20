@@ -1,6 +1,7 @@
 package com.team.travel.travelteam.api.data.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -25,10 +26,10 @@ public class User implements Serializable{
 
     @Column(name = "user_email", nullable = false)
     @NotNull
-    @Size(max = 50)
+    @Size(max = 15)
     private String email;
 
-    @JsonBackReference
+    @JsonIgnore
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private List<Position> positions;
 

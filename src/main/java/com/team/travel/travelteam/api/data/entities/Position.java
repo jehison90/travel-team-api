@@ -1,7 +1,5 @@
 package com.team.travel.travelteam.api.data.entities;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -34,13 +32,11 @@ public class Position implements Serializable {
     @MapsId("routeId")
     @ManyToOne
     @JoinColumn(name = "route_id")
-    @JsonManagedReference
     private Route route;
 
     @MapsId("userName")
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_name")
-    @JsonManagedReference
     private User user;
 
     public PositionPk getPositionPk() {

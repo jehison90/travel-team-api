@@ -1,6 +1,7 @@
 package com.team.travel.travelteam.api.data.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -43,7 +44,7 @@ public class Route implements Serializable {
     @Column(name = "final_place_description")
     private String finalPlaceDescription;
 
-    @JsonBackReference
+    @JsonIgnore
     @OneToMany(mappedBy = "route", fetch = FetchType.LAZY)
     private List<Position> positions;
 
