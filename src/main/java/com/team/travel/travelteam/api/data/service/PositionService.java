@@ -9,6 +9,8 @@ import java.util.List;
  */
 public interface PositionService {
 
+    Position save(Position position);
+
     List<Position> getActivePositionsByRoute(Integer routeId);
 
 }

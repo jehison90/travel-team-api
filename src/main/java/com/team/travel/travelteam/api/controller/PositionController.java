@@ -3,9 +3,7 @@ package com.team.travel.travelteam.api.controller;
 import com.team.travel.travelteam.api.data.entities.Position;
 import com.team.travel.travelteam.api.data.service.PositionService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,6 +20,11 @@ public class PositionController {
     @RequestMapping(value = "{routeId}")
     public List<Position> getActivePositionsByRoute(@PathVariable("routeId") Integer routeId){
         return positionService.getActivePositionsByRoute(routeId);
+    }
+
+    @RequestMapping(value = "add", method = RequestMethod.POST)
+    public Position createPosition(@RequestBody Position position) {
+        return positionService.save(position);
     }
 
 }
