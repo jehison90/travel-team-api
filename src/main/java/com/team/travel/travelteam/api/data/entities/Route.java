@@ -33,9 +33,11 @@ public class Route implements Serializable {
     private double finalY;
 
     @Column(name = "initial_datetime")
+    @Temporal(TemporalType.TIMESTAMP)
     private Date initialDateTime;
 
     @Column(name = "final_datetime")
+    @Temporal(TemporalType.TIMESTAMP)
     private Date finalDateTime;
 
     @Column(name = "initial_place_description")
