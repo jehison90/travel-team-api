@@ -1,7 +1,9 @@
 package com.team.travel.travelteam.api.data.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.team.travel.travelteam.api.data.utility.DateUtility;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -34,10 +36,12 @@ public class Route implements Serializable {
 
     @Column(name = "initial_datetime")
     @Temporal(TemporalType.TIMESTAMP)
+    @JsonFormat(pattern = DateUtility.DEFAULT_DATE_PATTERN)
     private Date initialDateTime;
 
     @Column(name = "final_datetime")
     @Temporal(TemporalType.TIMESTAMP)
+    @JsonFormat(pattern = DateUtility.DEFAULT_DATE_PATTERN)
     private Date finalDateTime;
 
     @Column(name = "initial_place_description")

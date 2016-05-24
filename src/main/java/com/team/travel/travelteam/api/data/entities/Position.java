@@ -1,5 +1,8 @@
 package com.team.travel.travelteam.api.data.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.team.travel.travelteam.api.data.utility.DateUtility;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -21,6 +24,8 @@ public class Position implements Serializable {
     private double lastY;
 
     @Column(name = "last_updated")
+    @Temporal(TemporalType.TIMESTAMP)
+    @JsonFormat(pattern = DateUtility.DEFAULT_DATE_PATTERN)
     private Date lastUpdated;
 
     @Column(name = "is_active")
