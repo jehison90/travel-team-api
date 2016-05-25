@@ -1,6 +1,7 @@
 package com.team.travel.travelteam.api.controller;
 
 import com.team.travel.travelteam.api.data.entities.Position;
+import com.team.travel.travelteam.api.data.entities.Route;
 import com.team.travel.travelteam.api.data.service.PositionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -25,6 +26,11 @@ public class PositionController {
     @RequestMapping(value = "add", method = RequestMethod.POST)
     public Position createPosition(@RequestBody Position position) {
         return positionService.save(position);
+    }
+
+    @RequestMapping(value = "/user/{userName}")
+    public Route getUserActiveRoute(@PathVariable("userName") String userName){
+        return positionService.getUserActiveRoute(userName);
     }
 
 }

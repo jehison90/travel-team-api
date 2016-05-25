@@ -1,6 +1,7 @@
 package com.team.travel.travelteam.api.data.service;
 
 import com.team.travel.travelteam.api.data.entities.Position;
+import com.team.travel.travelteam.api.data.entities.Route;
 
 import java.util.List;
 
@@ -12,5 +13,7 @@ public interface PositionService {
     Position save(Position position);
 
     List<Position> getActivePositionsByRoute(Integer routeId);
+
+    Route getUserActiveRoute (String userName);
 
 }

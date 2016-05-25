@@ -28,4 +28,9 @@ public class PositionServiceImpl implements PositionService {
     public List<Position> getActivePositionsByRoute(Integer routeId) {
         return positionRepository.getActivePositionsByRoute(routeId);
     }
+
+    @Override
+    public Route getUserActiveRoute (String userName){
+        return positionRepository.getUserActiveRoute(userName);
+    }
 }
